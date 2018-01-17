@@ -1,5 +1,6 @@
 const HARVESTERS = 5;
 const UPGRADERS = 10;
+const BUILDERS = 10;
 
 function countCreeps(role) {
     return Object.keys(Game.creeps)
@@ -15,6 +16,9 @@ module.exports = {
         }
         if (countCreeps('Upgrader') < UPGRADERS) {
             Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], Game.time, {memory: {role: 'Upgrader'}});
+        }
+        if (countCreeps('Builder') < BUILDERS) {
+            Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], Game.time, {memory: {role: 'Builder'}});
         }
     }
 

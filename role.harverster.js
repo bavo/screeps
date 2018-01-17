@@ -10,7 +10,7 @@ var roleHarvester = {
             creep.say('Harvesting ...');
         }
         if (creep.memory.harvesting) {
-            var sources = creep.room.find(FIND_SOURCES);
+            let sources = creep.room.find(FIND_SOURCES);
             if (creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(sources[1], {visualizePathStyle: {}});
             }
