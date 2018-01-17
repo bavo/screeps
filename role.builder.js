@@ -10,18 +10,18 @@ module.exports = {
         }
 
         if(creep.memory.building) {
-            let targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-            if(targets.length) {
-                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {}});
+            let target = creep.pos.findClosestByPath(FIND_CONSTRUCTION_SITES);
+            if(target) {
+                if(creep.build(target) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target, {visualizePathStyle: {}});
                 }
             }
         }
         else {
-            let sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0], {visualizePathStyle: {}});
+            let source = creep.pos.findClosestByPath(FIND_SOURCES);
+            if(creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(source, {visualizePathStyle: {}});
             }
         }
     }
-}
+};

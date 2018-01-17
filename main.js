@@ -19,4 +19,10 @@ module.exports.loop = function () {
             roleBuilder.run(creep);
         }
     }
+
+    for(let i in Memory.creeps) {
+        if(!Game.creeps[i]) {
+            delete Memory.creeps[i];
+        }
+    }
 };

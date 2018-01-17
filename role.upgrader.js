@@ -1,4 +1,4 @@
-var roleUpgrader = {
+module.exports = {
     run: function (creep) {
 
         if (creep.memory.upgrading && creep.carry.energy == 0) {
@@ -14,12 +14,10 @@ var roleUpgrader = {
                 creep.moveTo(creep.room.controller, {visualizePathStyle: {}});
             }
         } else {
-            let sources = creep.room.find(FIND_SOURCES);
-            if (creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0], {visualizePathStyle: {}});
+            let source = creep.pos.findClosestByPath(FIND_SOURCES);
+            if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(source, {visualizePathStyle: {}});
             }
         }
     }
 };
-
-module.exports = roleUpgrader;
